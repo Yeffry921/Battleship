@@ -34,12 +34,17 @@ const Ship = (shipType) => {
   }
 }
 
+const createShipFleet = () => {
+  const shipFleet = {}
 
-const shipFleet = {}
-
-shipName.forEach((shipType) => {
+  shipName.forEach((shipType) => {
   shipFleet[shipType] = Ship(shipType)
-})
+  })
 
-console.log(shipFleet)
+  return shipFleet
+
+}
+
+
+
 
