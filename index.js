@@ -18,6 +18,7 @@ const Ship = (shipType) => {
   const type = shipType
   const length = shipLength[shipType]
 
+  const shipHits = Array(length).fill(null)
 
   const hit = (num) => {
     shipHits[num] = 'hit'
