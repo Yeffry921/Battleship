@@ -1,4 +1,4 @@
-const Ship = require('./index')
+const Ship = require('../Ship')
 
 describe('ship properties', () => {
   const ship = Ship('destroyer')
@@ -23,6 +23,12 @@ describe('hit test function', () =>  {
   test('1 hit', () => {
     ship.hit(1)
     expect(ship.shipHits).toEqual([null, 'hit', null, null, null])
+  })
+
+  test('1 hit', () => {
+    ship.hit(1)
+    ship.hit(3)
+    expect(ship.shipHits).toEqual([null, 'hit', null, 'hit', null])
   })
 })
 
