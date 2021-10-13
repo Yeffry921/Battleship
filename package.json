@@ -1,0 +1,23 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yeffry921/Battleship.git"
+  },
+  "keywords": [],
+  "author": "ANTONI",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yeffry921/Battleship/issues"
+  },
+  "homepage": "https://github.com/Yeffry921/Battleship#readme",
+  "devDependencies": {
+    "jest": "^27.2.5"
+  }
+}
