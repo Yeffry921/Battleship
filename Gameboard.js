@@ -53,7 +53,7 @@ const Gameboard = () => {
 
   // Keep track of missed attacks with colors on board I assume?
   const missedAttacks = (x,y) => {
-    
+    board[x][y] = 'missed'
   }
 
   // Could be something as simple as checking if 'Hit' amount = a certain number for each ship
