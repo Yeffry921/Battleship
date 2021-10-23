@@ -59,6 +59,9 @@ const Gameboard = () => {
   // Could be something as simple as checking if 'Hit' amount = a certain number for each ship
   // Could also be keeping track of sunken ships, if sunken ships reaches the ship amount etc
   const allShipsSunk = () => {
+    shipFleet.every((ship) => {
+      return ship.isSunk === true
+    })
     
   }
 
