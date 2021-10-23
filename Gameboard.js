@@ -31,7 +31,23 @@ const Gameboard = () => {
 
 
   const receiveAttack = (x, y) => {
+// determine if you hit a ship or not 
+    // If its anything other than 0 its a ship
+    const shipLocator = board[x][y] //this gives me the ship tag from 2 to 5 
 
+    // Find out which ship you have hit depending on its tag
+    shipFleet.forEach((ship) => {
+      // check if the ships tag that was clicked matches the tag we used to represent it
+      if(ship.length == shipLocator) {
+        ship.hit()
+      } else {
+        missedAttacks(x,y);
+      }
+    })
+
+    // Make sure that location is inaccesible to be hit again ***
+    // We could save the index of the value and work from there
+    // simply disable things from the UI
     
   }
 
