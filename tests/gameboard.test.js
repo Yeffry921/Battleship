@@ -23,7 +23,7 @@ describe('Board matrix are rendered correctly', () => {
   })
 })
 
-describe('placing ships on maxtrix', () => {
+describe('placing ships on matrix', () => {
   const board = Gameboard();
   const ships = board.shipFleet;
   const matrix = board.matrix;
@@ -58,24 +58,24 @@ describe('placing ships on maxtrix', () => {
 
 })
 
-describe('test recieve attacks', () => {
+describe('test receive attacks', () => {
   const board = Gameboard()
   const matrix = board.matrix;
   const ships = board.shipFleet;
 
-  test('test recieving hit attacks', () => {
+  test('test receive hit attacks', () => {
     board.placeShips(1,2, ships[0]) 
 
     board.receiveAttack(1, 2)
     expect(matrix[1][2]).toBe('hit')
   })
-  test('test recieving hit attacks', () => {
+  test('test receive hit attacks', () => {
     board.placeShips(2,2, ships[2]) 
 
     board.receiveAttack(2, 2)
     expect(matrix[2][2]).toBe('hit')
   })
-  test('test recieving miss attacks', () => {
+  test('test receive miss attacks', () => {
     board.placeShips(4,2, ships[0]) 
 
     board.receiveAttack(4, 1)
