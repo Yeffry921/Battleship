@@ -23,11 +23,37 @@ describe('Board matrix are rendered correctly', () => {
   })
 })
 
-describe('Board matrix are rendered correctly', () => {
+describe('placing ships on maxtrix', () => {
   const board = Gameboard();
+  const ships = board.shipFleet;
+  const matrix = board.matrix;
 
-  test('matrix outer size', () => {
-    expect(matrix.length).toBe(10)
+  test('placing ship with type of 5', () => {
+    // Place ship on first row of the matrix, starting at 3rd position
+    board.placeShips(0,3, ships[0]) 
+
+    expect(matrix[0][2]).toBe(0)
+    expect(matrix[0][3]).toBe('5')
+    expect(matrix[0][4]).toBe('5')
+    expect(matrix[0][5]).toBe('5')
+    expect(matrix[0][6]).toBe('5')
+    expect(matrix[0][7]).toBe('5')
+    expect(matrix[0][8]).toBe(0)
+
+  })
+
+  test('placing ship with type of 4', () => {
+    // Place ship on first row of the matrix, starting at 3rd position
+    board.placeShips(1,2, ships[1]) 
+
+    expect(matrix[1][0]).toBe(0)
+    expect(matrix[1][1]).toBe(0)
+    expect(matrix[1][2]).toBe('4')
+    expect(matrix[1][3]).toBe('4')
+    expect(matrix[1][4]).toBe('4')
+    expect(matrix[1][5]).toBe('4')
+    expect(matrix[1][6]).toBe(0)
+
   })
 
 })
