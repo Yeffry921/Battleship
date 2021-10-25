@@ -17,35 +17,39 @@ describe('hit test function', () =>  {
   const ship = Ship('carrier')
 
   test('no hits', () => {
-    expect(ship.shipHits).toEqual([null, null, null, null, null])
+    expect(ship.shipHits).toEqual([])
   })
 
   test('1 hit', () => {
-    ship.hit(1)
-    expect(ship.shipHits).toEqual([null, 'hit', null, null, null])
+    ship.hit()
+    expect(ship.shipHits).toEqual(['hit'])
   })
 
-  test('1 hit', () => {
-    ship.hit(1)
-    ship.hit(3)
-    expect(ship.shipHits).toEqual([null, 'hit', null, 'hit', null])
+  test('extra hit', () => {
+    ship.hit()
+    expect(ship.shipHits).toEqual(['hit', 'hit'])
   })
 })
 
 describe('isSunk test function', () => {
-  const ship = Ship('battleship')
 
-  test('hit but not sunk', () => {
-    ship.hit(0)
-    ship.hit(2)
+  test('hit a 4 piece ship 2 times', () => {
+    const ship = Ship('battleship')
+
+    ship.hit()
+    ship.hit()
     expect(ship.isSunk()).toBe(false)
   })
+})
+
+describe('isSunk test function', () => {
 
   test('sunken ship', () => {
-    ship.hit(0)
-    ship.hit(1)
-    ship.hit(2)
-    ship.hit(3)
+    const ship = Ship('cruiser')
+  
+    ship.hit()
+    ship.hit()
+    ship.hit()
     expect(ship.isSunk()).toBe(true)
   })
 })
