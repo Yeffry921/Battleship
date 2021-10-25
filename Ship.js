@@ -5,24 +5,25 @@ const Ship = (shipType) => {
   const type = shipType
   const length = shipLengths[shipType]
 
-  const shipHits = Array(length).fill(null)
+  const shipHits = []
 
-  const hit = (num) => {
-    shipHits[num] = 'hit'
+  const hit = () => {
+    shipHits.push('hit');
+    return shipHits;
   }
 
   const isSunk = () => {
     return shipHits.every((hit) => {
-      return hit === 'hit'
+      return hit === 'hit' && shipHits.length === length
     })
   }
 
   return {
     type,
     length,
-    shipHits,
     hit,
     isSunk,
+    shipHits,
   }
 }
 
