@@ -1,29 +1,34 @@
 const Gameboard = require('../Gameboard')
 
-describe('gameboard ship fleet', () => {
+describe('test for ship fleet', () => {
   const board = Gameboard()
   test('all ships are accounted for', () => {
-    expect(board.shipFleet().length).toBe(5)
+    expect(board.shipFleet.length).toBe(5)
   })
 })
 
-describe('place ships function', () => {
-  const board = Gameboard()
-  const ships = board.shipFleet()
-  const matrix = board.matrix
-
-  test('place destroyer at X(1)Y(3)', () => {
-    expect(board.placeShips(2, 3, ships[1])).toEqual()
-  })
-})
-
-describe('properly tracks attack missed', () => {
+describe('Board matrix are rendered correctly', () => {
   const board = Gameboard();
-  const shipFleet = board.shipFleet()
+  const matrix = board.matrix;
 
-
-  test('place destroyer at X(1)Y(3)', () => {
-    expect(board.missedAttacks(1, 3)).toEqual()
+  test('matrix outer size', () => {
+    expect(matrix.length).toBe(10)
   })
- 
+
+  test('matrix rows inner sizes', () => {
+    expect(matrix[0].length).toBe(10)
+    expect(matrix[3].length).toBe(10)
+    expect(matrix[5].length).toBe(10)
+    expect(matrix[7].length).toBe(10)
+  })
 })
+
+describe('Board matrix are rendered correctly', () => {
+  const board = Gameboard();
+
+  test('matrix outer size', () => {
+    expect(matrix.length).toBe(10)
+  })
+
+})
+
