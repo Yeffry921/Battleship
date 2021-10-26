@@ -30,7 +30,7 @@ describe('placing ships on matrix', () => {
 
   test('placing ship with type of 5', () => {
     // Place ship on first row of the matrix, starting at 3rd position
-    board.placeShips(0,3, ships[0]) 
+    board.placeShips(0, 3, ships[0])
 
     expect(matrix[0][2]).toBe(0)
     expect(matrix[0][3]).toBe('5')
@@ -44,7 +44,7 @@ describe('placing ships on matrix', () => {
 
   test('placing ship with type of 4', () => {
     // Place ship on first row of the matrix, starting at 3rd position
-    board.placeShips(1,2, ships[1]) 
+    board.placeShips(1, 2, ships[1])
 
     expect(matrix[1][0]).toBe(0)
     expect(matrix[1][1]).toBe(0)
@@ -64,23 +64,54 @@ describe('test receive attacks', () => {
   const ships = board.shipFleet;
 
   test('test receive hit attacks', () => {
-    board.placeShips(1,2, ships[0]) 
+    board.placeShips(1, 2, ships[0])
 
     board.receiveAttack(1, 2)
     expect(matrix[1][2]).toBe('hit')
   })
   test('test receive hit attacks', () => {
-    board.placeShips(2,2, ships[2]) 
+    board.placeShips(2, 2, ships[2])
 
     board.receiveAttack(2, 2)
     expect(matrix[2][2]).toBe('hit')
   })
   test('test receive miss attacks', () => {
-    board.placeShips(4,2, ships[0]) 
+    board.placeShips(4, 2, ships[0])
 
     board.receiveAttack(4, 1)
     expect(matrix[4][1]).toBe('miss')
-    console.log(matrix)
   })
 
+})
+
+describe('test sunken ships', () => {
+
+  test('all ships are sunk', () => {
+    const board = Gameboard()
+    const ships = board.shipFleet;
+
+    // Sink all ships
+    for (let i = 0; i < ships.length; i++) {
+      let shipHits = ships[i].length
+      for (let j = 0; j < shipHits; j++) {
+        ships[i].hit()
+      }
+    }
+    expect(board.allShipsSunk()).toBe(true)
+  })
+
+  test('3 sunken ships returns false', () => {
+    const board = Gameboard()
+    const ships = board.shipFleet;
+    
+    // Sink 3 ships
+    for (let i = 0; i < 3; i++) {
+      let shipHits = ships[i].length
+      for (let j = 0; j < shipHits; j++) {
+        ships[i].hit()
+      }
+    }
+
+    expect(board.allShipsSunk()).toBe(false)
+  })
 })
