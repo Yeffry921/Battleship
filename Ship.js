@@ -13,9 +13,7 @@ const Ship = (shipType) => {
   }
 
   const isSunk = () => {
-    return shipHits.every((hit) => {
-      return hit === 'hit' && shipHits.length === length
-    })
+    return shipHits.length === length && shipHits.every((hit) => hit === 'hit')
   }
 
   return {
