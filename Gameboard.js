@@ -13,7 +13,7 @@ function makeMatrix(m, n) {
 const Gameboard = () => {
 
   const shipFleet = shipNames.map((ship) => Ships(ship))
-  
+
   const matrix = makeMatrix(10, 10)
 
   const placeShips = (x, y, ship) => {
@@ -26,37 +26,34 @@ const Gameboard = () => {
       matrix[x][y++] = (ship.length).toString()
     }
 
-    return x,y
   }
 
 
   const receiveAttack = (x, y) => {
 
-    const shipId = matrix[x][y] 
+    const shipId = matrix[x][y]
+
+    if (matrix[x][y] === 'hit' || matrix[x][y] === 'miss') {
+      return;
+    }
+
+    if (shipId === 0) {
+      matrix[x][y] = 'miss'
+      return;
+    }
 
     shipFleet.forEach((ship) => {
-      if(ship.length == shipId) {
+      if (ship.length == shipId) {
+        matrix[x][y] = 'hit'
         ship.hit()
-      } else {
-        missedAttacks(x,y);
       }
     })
-
-    return x,y
-    // Make sure that location is inaccesible to be hit again ***
-    // We could save the index of the value and work from there
-    // simply disable things from the UI
-  }
-
-  const missedAttacks = (x,y) => {
-    matrix[x][y] = 'missed';
   }
 
   const allShipsSunk = () => {
-    shipFleet.every((ship) => {
-      return ship.isSunk === true
+    return shipFleet.every((ship) => {
+      return ship.isSunk() === true
     })
-    
   }
 
   return {
@@ -65,7 +62,6 @@ const Gameboard = () => {
     placeShips,
     receiveAttack,
     allShipsSunk,
-    missedAttacks,
   }
 
 }
