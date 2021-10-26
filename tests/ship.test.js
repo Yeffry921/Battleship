@@ -33,16 +33,19 @@ describe('hit test function', () =>  {
 
 describe('isSunk test function', () => {
 
-  test('hit a 4 piece ship 2 times', () => {
+  test('for non hits', () => {
+    const ship = Ship('destroyer')
+
+    expect(ship.isSunk()).toBe(false)
+  })
+
+  test('hit a 4 piece ship 2 times d', () => {
     const ship = Ship('battleship')
 
     ship.hit()
     ship.hit()
     expect(ship.isSunk()).toBe(false)
   })
-})
-
-describe('isSunk test function', () => {
 
   test('sunken ship', () => {
     const ship = Ship('cruiser')
