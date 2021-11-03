@@ -32,6 +32,7 @@ const Gameboard = () => {
   const receiveAttack = (x, y) => {
 
     const shipId = matrix[x][y]
+    let result = null;
 
     if (matrix[x][y] === 'hit' || matrix[x][y] === 'miss') {
       return;
@@ -39,15 +40,19 @@ const Gameboard = () => {
 
     if (shipId === 0) {
       matrix[x][y] = 'miss'
-      return;
+      result = 'miss'
     }
 
     shipFleet.forEach((ship) => {
       if (ship.length == shipId) {
         matrix[x][y] = 'hit'
         ship.hit()
+        result = 'hit';
       }
     })
+
+    return result;
+
   }
 
   const allShipsSunk = () => {
@@ -65,3 +70,14 @@ const Gameboard = () => {
 }
 
 module.exports = Gameboard
+
+// By default all should have class name of some sort
+// 
+
+// 0 = white
+
+// 1-5 = 
+
+// miss = green
+
+// hits = red
