@@ -1,0 +1,27 @@
+body {
+  display: flex;
+  justify-content: space-evenly;
+}
+table {
+  width: 40rem;
+  height: 40rem;
+  border: 1px solid black;
+}
+
+th {
+  height: 70px;
+  border: 1px solid black;
+}
+
+td {
+  border: 1px solid black;
+}
+
+.hit {
+  background-color: rgb(255, 133, 133);;
+}
+
+.miss {
+  background-color:rgb(133, 255, 179);
+}
+
